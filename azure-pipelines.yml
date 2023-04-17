@@ -5,7 +5,6 @@ pool:
   vmImage: windows-latest
 
 steps:
-steps:
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
 
