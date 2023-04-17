@@ -10,7 +10,8 @@ Get-PSRepository
 
 Find-Module -Repository PowershellAzureDevopsServices -Credential $credsAzureDevopsServices
 
-Install-Module -Name KpInfo -Repository PowershellAzureDevopsServices -Credential $credsAzureDevopsServices
+Install-Module -Name KpInfo -Repository PowershellAzureDevopsServices -Credential $credsAzureDevopsServices 
 
 Get-Module -ListAvailable KpInfo
+
 
