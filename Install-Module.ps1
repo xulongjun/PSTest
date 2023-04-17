@@ -4,6 +4,8 @@ param
     $moduleName = "KpInfo"
 )
 
+Write-Host "pathNuget : $pathNuget"
+
 # $pathNuget = $PSScriptRoot
 
 # First time
