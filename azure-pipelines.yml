@@ -12,4 +12,4 @@ steps:
   inputs:
     pwsh: true
     targetType: filePath
-    filePath: $(Build.SourcesDirectory)/Install-Module.ps1
+    filePath: $(Build.SourcesDirectory)/Install-Module-Pat.ps1
