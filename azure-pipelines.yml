@@ -35,7 +35,6 @@ steps:
   displayName: Install Module
   name: installmodules
   inputs:
-    pwsh: true
     targetType: filePath
     filePath: $(Build.SourcesDirectory)/Install-Module.ps1
     arguments: > 
