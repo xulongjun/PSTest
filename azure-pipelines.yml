@@ -38,6 +38,6 @@ steps:
     pwsh: true
     targetType: filePath
     filePath: $(Build.SourcesDirectory)/Install-Module.ps1
-    argument: >
-      -pathNuget : '$(Build.SourcesDirectory)'
+    arguments: > 
+      -pathNuget '$(Build.SourcesDirectory)'
 
