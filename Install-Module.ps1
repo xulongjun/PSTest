@@ -7,10 +7,10 @@ param
 )
 
 # local test
-# $accessToken = "wbn6ea7pijldiit4bfb46napgd7kksidnse3wzcnf3bovupciumq"
-# $moduleName = "Athlon.databaseTools"
-# $sourceName = "AthlonPowershellDev" #4
-# $feedLocation = "https://pkgs.dev.azure.com/daimler/AthFrOpsDev/_packaging/AthlonPowershellDev/nuget/v2"
+$accessToken = "33v2eejfsjckirgz2puagcxdqzcv5uqzmybmbeyyktdfxsdnwocq"
+$moduleName = "KpInfo"
+$sourceName = "PsModuleTest" #4
+$feedLocation = "https://pkgs.dev.azure.com/xulongjunfr/LongjunTest/_packaging/PsModuleTest/nuget/v2"
 
 # [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 #1
 
@@ -32,7 +32,8 @@ if (-not (Get-Module -Name $moduleName -ListAvailable))
 }
     Get-Module -ListAvailable -Name $moduleName
     import-Module $moduleName
-    Get-Quote
 
-# Remove-Module -Name "Athlon.databaseTools"
-# Uninstall-Module -Name "Athlon.databaseTools"  -AllVersions
+    Get-KpICatFact
+
+# Remove-Module -Name "KpInfo"
+# Uninstall-Module -Name "KpInfo"  -AllVersions
