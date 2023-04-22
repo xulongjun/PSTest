@@ -12,7 +12,7 @@ param
 # $sourceName = "AthlonPowershellDev" #4
 # $feedLocation = "https://pkgs.dev.azure.com/daimler/AthFrOpsDev/_packaging/AthlonPowershellDev/nuget/v2"
 
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 #1
+# [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 #1
 
 if (-not (Get-Module -Name $moduleName -ListAvailable)) 
 {
