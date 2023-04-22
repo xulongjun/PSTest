@@ -36,7 +36,7 @@ steps:
   name: installmodules
   inputs:
     targetType: filePath
-    filePath: $(Build.SourcesDirectory)/source/Module/Install-Module.ps1
+    filePath: $(Build.SourcesDirectory)/Install-Module.ps1
     arguments: > 
       -accessToken $env:SYSTEM_ACCESSTOKEN
       -moduleName 'KpInfo'
