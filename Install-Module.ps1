@@ -1,39 +1,36 @@
 param 
 (
-    $pathNuget,
-    $moduleName = "KpInfo"
+    $accessToken,
+    $moduleName,
+    $sourceName,
+    $feedLocation
 )
 
-Write-Host "pathNuget : $pathNuget"
+# local test
+# $accessToken = "wbn6ea7pijldiit4bfb46napgd7kksidnse3wzcnf3bovupciumq"
+# $moduleName = "Athlon.databaseTools"
+# $sourceName = "AthlonPowershellDev" #4
+# $feedLocation = "https://pkgs.dev.azure.com/daimler/AthFrOpsDev/_packaging/AthlonPowershellDev/nuget/v2"
 
-# $pathNuget = $PSScriptRoot
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 #1
 
-# First time
-# Write-Host "Downloading nuget.exe..."
-# Invoke-WebRequest -Uri 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe' -OutFile 'C:/nuget/nuget.exe'
-# Write-Host "Adding nuget.exe to PATH..."
-# $env:PATH += ";C:/nuget/"
+if (-not (Get-Module -Name $moduleName -ListAvailable)) 
+{
+    Write-Host "moduleName not found : $moduleName"
 
-# Uninstall-Module -Name "KpInfo"  -AllVersions
-# Remove-Module -Name "KpInfo"
+    $token = $accessToken | ConvertTo-SecureString -AsPlainText -Force #2
+    $credential = New-Object System.Management.Automation.PSCredential($accessToken, $token) #3
 
-try {
-    # Ensure the module is not already installed
-    if (!(Get-Module -ListAvailable -Name $moduleName)) {
-        # Save the NuGet package containing the module to a temporary folder
-        $tempFolder = New-Item -ItemType Directory -Path (Join-Path $env:TEMP ([System.Guid]::NewGuid().ToString()))
-        $nugetConfigPath = "$pathNuget\nuget.config"
-        & "nuget.exe" install $moduleName -ExcludeVersion -OutputDirectory $tempFolder -ConfigFile $nugetConfigPath
-    
-        # Import the module from the saved NuGet package
-        $moduleFolder = Get-ChildItem -Path $tempFolder -Directory | Select-Object -First 1
-        $modulePath = Join-Path $moduleFolder.FullName "$moduleName.psm1"
-        Import-Module -Name $modulePath -Verbose
+    if (-not (Get-PackageSource -name $sourceName -ErrorAction SilentlyContinue)) {
+         Write-Host "sourceName not found : $sourceName"
+         Register-PackageSource -Name $sourceName -ProviderName PowerShellGet -Location $feedLocation -Trusted -Credential $credential #6
     }
 
-    Get-CatFact    
+    Install-Module -Name $moduleName -Repository $sourceName -Force -Credential $credential #8
+    Write-Host "Install-Module : $moduleName"
+    # $pathNuget = (get-item $PSScriptRoot).Parent.Parent.FullName
 }
-catch {
-    $message = $_
-    Write-Error "exception happened! $message"   
-}
+    Get-Module -ListAvailable -Name $moduleName
+
+# Remove-Module -Name "Athlon.databaseTools"
+# Uninstall-Module -Name "Athlon.databaseTools"  -AllVersions

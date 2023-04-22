@@ -36,7 +36,12 @@ steps:
   name: installmodules
   inputs:
     targetType: filePath
-    filePath: $(Build.SourcesDirectory)/Install-Module.ps1
+    filePath: $(Build.SourcesDirectory)/source/Module/Install-Module.ps1
     arguments: > 
-      -pathNuget '$(Build.SourcesDirectory)'
+      -accessToken $env:SYSTEM_ACCESSTOKEN
+      -moduleName 'KpInfo'
+      -sourceName 'PsModuleTest'
+      -feedLocation 'https://pkgs.dev.azure.com/xulongjunfr/LongjunTest/_packaging/PsModuleTest/nuget/v2'
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken) #10
 
