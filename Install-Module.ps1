@@ -31,6 +31,8 @@ if (-not (Get-Module -Name $moduleName -ListAvailable))
     # $pathNuget = (get-item $PSScriptRoot).Parent.Parent.FullName
 }
     Get-Module -ListAvailable -Name $moduleName
+    import-Module $moduleName
+    Get-Quote
 
 # Remove-Module -Name "Athlon.databaseTools"
 # Uninstall-Module -Name "Athlon.databaseTools"  -AllVersions
