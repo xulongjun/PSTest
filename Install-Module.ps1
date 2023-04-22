@@ -7,10 +7,10 @@ param
 )
 
 # local test
-$accessToken = "33v2eejfsjckirgz2puagcxdqzcv5uqzmybmbeyyktdfxsdnwocq"
-$moduleName = "KpInfo"
-$sourceName = "PsModuleTest" #4
-$feedLocation = "https://pkgs.dev.azure.com/xulongjunfr/LongjunTest/_packaging/PsModuleTest/nuget/v2"
+# $accessToken = "33v2eejfsjckirgz2puagcxdqzcv5uqzmybmbeyyktdfxsdnwocq"
+# $moduleName = "KpInfo"
+# $sourceName = "PsModuleTest" #4
+# $feedLocation = "https://pkgs.dev.azure.com/xulongjunfr/LongjunTest/_packaging/PsModuleTest/nuget/v2"
 
 # [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 #1
 
